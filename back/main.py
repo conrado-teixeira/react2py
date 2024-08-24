@@ -1,13 +1,30 @@
 import json
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
+class Pessoa():
+    def __init__(self, url, name, company):
+        self.url = url
+        self.company = company
+        self.name = name
+
+    def to_json(self):
+        return {
+            "url" : self.url,
+            "company" : self.company,
+            "name" : self.name
+        }
+
+    pass
+
+
+
 def buscar_vagas():
-    return [
-        {"name": 'John Does', "company": 'ABCD Corp'},
-        {"name": 'Jane Smith', "company": 'XYZ Inc'},
-        {"name": 'Michael Johnson', "company": 'Widgets Co'},
-        {"name": 'Emily Davis', "company": 'Tech Solutions'},
+    pessoas = [
+        Pessoa(url="http://www.google.com", company= "GuGu", name="Dev").to_json(),
+        Pessoa(url="http://www.google.com", company= "Amazão", name="CTO").to_json(),
+        Pessoa(url="http://www.google.com", company= "Feices", name="Stag").to_json()
     ]
+    return pessoas
 
 class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):

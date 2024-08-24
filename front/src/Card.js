@@ -6,10 +6,12 @@ function Card({ person }) {
     return null; // Handle cases where person might be undefined or null
   }
   return (
+    <a href={person.url} className="card-link">
     <div className="card">
       <h2>{person.name}</h2>
       <p>{person.company}</p>
     </div>
+    </a>
   );
 }
 
